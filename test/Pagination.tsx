@@ -1,5 +1,5 @@
 interface PaginationProps {
-    pageHandle: (jump: number | string) => {},
+    pageHandle: (jump: number | string) => any,
     lastPage: number,
     current_page: number,
     disableButtonColor: string,
@@ -58,7 +58,7 @@ const Pagination = ({
                                 paddingRight: buttonSize - 20 + 'px',
                                 fontSize: font + 'px'
                             }}
-                            onMouseLeave={(event) => {
+                            onMouseLeave={(event: { target: { style: { backgroundColor: string; color: string; }; }; }) => {
                                 event.target.style.backgroundColor = buttonBgColor;
                                 event.target.style.color = buttonTextColor;
                             }}
