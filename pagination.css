@@ -1,0 +1,86 @@
+/*******************************************/
+:root {
+    --borderRadius: 0.5rem;
+    --btn-focus-scale: 0.95;
+    --align-main-div: center;
+    --buttonSize: 30px;
+    /* 1rem = 16px */
+    --padding-mainDiv: 8px 0px;
+    /* 
+      --padding-mainDiv: top/bottom left/right;
+    */
+}
+
+.pagination-srakib .buttonDisable {
+    color: white;
+    cursor: default;
+}
+
+.pagination-srakib {
+    display: flex;
+    justify-content: var(--align-main-div);
+    align-items: center;
+    padding: 8px 0;
+}
+
+.pagination-srakib button {
+    display: inline-flex;
+    flex-shrink: 0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    border-radius: var(--borderRadius, 0.5rem);
+    border: 1px solid transparent;
+
+    font-weight: 600;
+    text-transform: uppercase;
+
+    min-height: var(--buttonSize, 2rem) !important
+        /* 32px */
+    ;
+    font-size: calc(var(--buttonSize, 2rem) - 1.125rem)
+        /* 14px */
+    ;
+
+}
+
+.pagination-srakib button:hover {
+    color: white;
+}
+
+.pagination-srakib button:active:hover,
+.pagination-srakib button:active:focus {
+    animation: none;
+    transform: scale(var(--btn-focus-scale, 0.95));
+}
+
+
+
+
+.pagination-srakib .button-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pagination-srakib .button-group button {
+    border-radius: 0px;
+}
+
+/* .button-group button:nth-child(1) {
+  --borderRadius: 0.5rem 0 0 0.5rem;
+  border-radius: var(--borderRadius);
+}
+
+.button-group button:nth-last-child(1) {
+  --borderRadius: 0 0.5rem 0.5rem 0;
+  border-radius: var(--borderRadius);
+} */
