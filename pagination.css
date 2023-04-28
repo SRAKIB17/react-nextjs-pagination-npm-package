@@ -57,8 +57,7 @@
     color: white;
 }
 
-.pagination-srakib button:active:hover,
-.pagination-srakib button:active:focus {
+.pagination-srakib button:active:focus:not(.buttonDisable) {
     animation: none;
     transform: scale(var(--btn-focus-scale, 0.95));
 }

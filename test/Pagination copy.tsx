@@ -152,34 +152,8 @@ const Pagination = ({
                 */}
 
 
-                {/* <a href="#"
-                    onmouseover="this.style.textDecoration = 'none'"
-                    onmouseout="this.style.textDecoration = 'underline'">Hello</a> */}
-
                 {/* *******CURRENT PAGE AND DISABLE BUTTON********** */}
-                <button
-                    className=" buttonDisable button "
-                    style={{
-                        borderColor: borderColor,
-                        borderWidth: borderWidth + 'px',
-                        backgroundColor: disableButtonColor,
-                        color: buttonTextColor,
-                        height: buttonSize + 'px',
-                        paddingLeft: buttonSize - 20 + 'px',
-                        paddingRight: buttonSize - 20 + 'px',
-                        fontSize: font + 'px'
-                    }}
-                    onMouseLeave={(event) => {
-                        event.target.style.backgroundColor = buttonBgColor;
-                        event.target.style.color = buttonTextColor;
-                    }}
-                    onMouseEnter={(event) => {
-                        event.target.style.backgroundColor = buttonHoverColor;
-                        event.target.style.color = (Boolean(buttonTextHoverColor) ? buttonTextHoverColor : buttonTextColor);
-                    }}
-                >
-                    {current_page}
-                </button>
+
 
                 {/* 
 

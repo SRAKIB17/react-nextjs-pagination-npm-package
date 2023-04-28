@@ -12,9 +12,13 @@ let buttonBgColor = 'blue'
 let buttonTextColor = 'white'
 let buttonSize = 32
 let font = 534;
-
+const pageHandleFunction = (jump) => {
+    console.log(jump)
+}
 
 let current_page = 3
+let lastPage = 645
+
 let buttonStyle = {
     borderColor: borderColor,
     borderWidth: borderWidth,
@@ -54,7 +58,9 @@ const buttonGenerate = ({ className, style, html, mode, pageHandleFunction }) =>
             event.target.style.backgroundColor = style.buttonHoverColor;
             event.target.style.color = (Boolean(style.buttonTextHoverColor) ? style.buttonTextHoverColor : style.buttonTextColor);
         }
-        button.onclick = pageHandleFunction
+        button.onclick = () => {
+            pageHandleFunction(html)
+        }
     }
 
     secondDiv.appendChild(button)
@@ -64,16 +70,18 @@ const buttonGenerate = ({ className, style, html, mode, pageHandleFunction }) =>
 //!  when current_page greater three (current_page > 3)
 
 
-//!  when current_page greater one (current_page > 1)
+//! Case 05: when current_page greater one (current_page > 1)
 // * Done
 
 buttonGenerate({
     className: "button buttonPage",
     style: buttonStyle,
     html: current_page - 1,
+    pageHandleFunction: pageHandleFunction
 })
 
 //!  disable button current page 
+// * Done
 
 buttonGenerate({
     className: " buttonDisable button ",
@@ -83,9 +91,12 @@ buttonGenerate({
 })
 
 
-//! when current_page == lastPage || current_page == lastPage - 3 || then
+//! Case 06: when current_page == lastPage || current_page == lastPage - 3 || then
 //? current_page >= lastPage - 2 || current_page == lastPage - 4 || then
 
+// if (current_page == lastPage || current_page == lastPage - 3) {
+
+// }
 
 //! when current_page < lastPage - 2 && then
 
