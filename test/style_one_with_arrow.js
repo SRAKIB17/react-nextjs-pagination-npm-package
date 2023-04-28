@@ -8,16 +8,18 @@ secondDiv.setAttribute('class', 'button-group')
 
 let borderColor = '#00BCD4'
 let borderWidth = 1
-let buttonBgColor = 'gold'
+let buttonBgColor = 'white'
 let buttonTextColor = 'black'
 let buttonSize = 32
 let font = 534;
+let rounded = true
 
 let disableButtonColor = '#00BCD4'
 let buttonHoverColor = '#00BCD4'
 let buttonTextHoverColor = 'white'
 
-let current_page = 6
+let current_page = 6;
+let arrowButtonShow = true
 const pageHandleFunction = (jump) => {
     console.log(jump)
 }
@@ -32,6 +34,8 @@ function standardize_color(str) {
     };
     return hex2rgba(ctx.fillStyle);
 }
+
+
 
 let buttonStyle = {
     borderColor: standardize_color(borderColor),
@@ -49,19 +53,49 @@ let buttonStyle = {
 
 }
 
+
+const svgRight =
+    `
+<svg viewBox="0 0 26 26"
+    height='8'
+    width='8'
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M19.1552734,12.4697266l-11.25-11.25c-0.2929688-0.2929688-0.7675781-0.2929688-1.0605469,0  s-0.2929688,0.7675781,0,1.0605469L17.5644531,13L6.8447266,23.7197266c-0.2929688,0.2929688-0.2929688,0.7675781,0,1.0605469  C6.9912109,24.9267578,7.1826172,25,7.375,25s0.3837891-0.0732422,0.5302734-0.2197266l11.25-11.25  C19.4482422,13.2373047,19.4482422,12.7626953,19.1552734,12.4697266z" stroke="currentColor" stroke-width="2" />
+</svg>
+`
+const svgLeft =
+    `
+<svg viewBox="0 0 26 26"
+    height='8'
+    width='8'
+    xmlns="http://www.w3.org/2000/svg"
+    style='transform: rotate(180deg)'
+>
+    <path
+        d="M19.1552734,12.4697266l-11.25-11.25c-0.2929688-0.2929688-0.7675781-0.2929688-1.0605469,0  s-0.2929688,0.7675781,0,1.0605469L17.5644531,13L6.8447266,23.7197266c-0.2929688,0.2929688-0.2929688,0.7675781,0,1.0605469  C6.9912109,24.9267578,7.1826172,25,7.375,25s0.3837891-0.0732422,0.5302734-0.2197266l11.25-11.25  C19.4482422,13.2373047,19.4482422,12.7626953,19.1552734,12.4697266z" stroke="currentColor" stroke-width="2" />
+</svg>
+`
+
 const buttonGenerate = ({ className, style, html, mode, pageHandleFunction, value }) => {
     let button = document.createElement('button')
     button.setAttribute('class', className)
     button.style.borderColor = style.borderColor
     button.style.borderWidth = style.borderWidth + 'px';
     button.style.backgroundColor = (mode == 'disable' ? style.disableButtonColor : style.buttonBgColor);
-    button.style.color = style.buttonTextColor;
+    button.style.color = (mode == 'disable' ? style.buttonTextHoverColor : style.buttonTextColor);
     button.style.height = style.buttonSize + 'px'
     button.style.paddingLeft = style.buttonSize - 20 + 'px';
     button.style.paddingRight = style.buttonSize - 20 + 'px';
     button.style.fontSize = style.fontSize + 'px';
     button.innerHTML = html
 
+    if (rounded) {
+        button.style.borderRadius = '1000px'
+        button.style.margin = '4px'
+    }
+    button.style.width = 'fit'
 
     if (!(mode == 'disable')) {
         button.onmouseleave = (event) => {
@@ -88,6 +122,16 @@ const getPageArray = lastPage > 10 ? [...Array(lastPage).keys()].slice((
     (current_page - 5 >= 0 ? current_page + 4 : 10)
 ) : [...Array(lastPage).keys()]
 
+
+if (current_page >= 6 && current_page != 1 && arrowButtonShow) {
+    buttonGenerate({
+        className: "button buttonPage",
+        style: buttonStyle,
+        html: svgLeft,
+        value: (current_page - 1),
+        pageHandleFunction: pageHandleFunction
+    })
+}
 
 if (current_page >= 6) {
     buttonGenerate({
@@ -121,7 +165,7 @@ for (const index of getPageArray) {
 }
 
 
-if (lastPage - 3 >= current_page) {
+if (lastPage - 3 >= current_page && arrowButtonShow) {
     buttonGenerate({
         className: "button buttonPage",
         style: buttonStyle,
@@ -130,11 +174,15 @@ if (lastPage - 3 >= current_page) {
         pageHandleFunction: pageHandleFunction
     })
 }
+if (lastPage - 3 >= current_page && arrowButtonShow) {
+    buttonGenerate({
+        className: "button buttonPage",
+        style: buttonStyle,
+        html: svgRight,
+        value: current_page + 1,
+        pageHandleFunction: pageHandleFunction
+    })
+}
 
 PaginationMainDiv.appendChild(secondDiv)
 document.body.appendChild(PaginationMainDiv)
-console.log(PaginationMainDiv)
-
-
-
-

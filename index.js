@@ -1,66 +1,16 @@
-//  For main div
-const PaginationMainDiv = document.createElement('div');
-PaginationMainDiv.setAttribute('class', 'pagination-srakib')
-
-//2nd div
-const secondDiv = document.createElement('div');
-secondDiv.setAttribute('class', 'button-group')
-
-let borderColor = 'red'
-let borderWidth = 5
-let buttonBgColor = 'blue'
-let buttonTextColor = 'white'
-let buttonSize = 32
-let font = 534;
-
-let buttonStyle = {
-    borderColor: borderColor,
-    borderWidth: borderWidth + 'px',
-    backgroundColor: buttonBgColor,
-    color: buttonTextColor,
-    height: buttonSize + 'px',
-    paddingLeft: buttonSize - 20 + 'px',
-    paddingRight: buttonSize - 20 + 'px',
-    fontSize: font + 'px'
-}
-
-const buttonGenerate = ({ className, style, html, mode }) => {
-    let button = document.createElement('button')
-    button.setAttribute('class', className)
-    button.style.borderColor = style.borderColor
-    button.style.borderWidth = style.borderWidth + 'px';
-    button.style.backgroundColor = style.buttonBgColor;
-    button.style.color = style.buttonTextColor;
-    button.style.height = style.buttonSize + 'px'
-    button.style.paddingLeft = style.buttonSize - 20 + 'px';
-    button.style.paddingRight = style.buttonSize - 20 + 'px';
-    button.style.fontSize = style.fontSize + 'px';
-    secondDiv.appendChild(button)
-}
-
-
-//!  when current_page greater three (current_page > 3)
-
-
-//!  when current_page greater one (current_page > 1)
-
-buttonGenerate({
-    className: "button buttonPage",
-    style: buttonStyle,
-
-})
-
-//!  disable button current page 
-
-//! when current_page == lastPage || current_page == lastPage - 3 || then
-//? current_page >= lastPage - 2 || current_page == lastPage - 4 || then
-
-
-//! when current_page < lastPage - 2 && then
-
-//!  when  lastPage - 2 == current_page && then
-
-
-PaginationMainDiv.appendChild(secondDiv)
-
-console.log(PaginationMainDiv)
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Style_two_dot_pagination_1 = require("./Style_two_dot_pagination");
+var style_one_without_dot_pagination_1 = require("./style_one_without_dot_pagination");
+var Pagination = function (_a) {
+    var pageHandle = _a.pageHandle, current_page = _a.current_page, lastPage = _a.lastPage, _b = _a.disableButtonColor, disableButtonColor = _b === void 0 ? '#3ABFF8' : _b, _c = _a.buttonBgColor, buttonBgColor = _c === void 0 ? 'white' : _c, _d = _a.buttonTextColor, buttonTextColor = _d === void 0 ? 'black' : _d, _e = _a.buttonTextHoverColor, buttonTextHoverColor = _e === void 0 ? 'white' : _e, _f = _a.buttonHoverColor, buttonHoverColor = _f === void 0 ? 'blue' : _f, _g = _a.borderColor, borderColor = _g === void 0 ? 'blue' : _g, _h = _a.borderWidth, borderWidth = _h === void 0 ? 1 : _h, _j = _a.buttonSize, buttonSize = _j === void 0 ? 32 : _j, _k = _a.font, font = _k === void 0 ? 18 : _k, _l = _a.rounded, rounded = _l === void 0 ? false : _l, _m = _a.arrowButtonShow, arrowButtonShow = _m === void 0 ? false : _m, paginationStyle = _a.paginationStyle;
+    var getPagination;
+    if (paginationStyle == 'style_one_dot') {
+        getPagination = (0, Style_two_dot_pagination_1.Style_two_dot_pagination)({ arrowButtonShow: arrowButtonShow, borderColor: borderColor, borderWidth: borderWidth, buttonBgColor: buttonBgColor, buttonHoverColor: buttonHoverColor, buttonSize: buttonSize, buttonTextColor: buttonTextColor, buttonTextHoverColor: buttonTextHoverColor, current_page: current_page, disableButtonColor: disableButtonColor, font: font, lastPage: lastPage, pageHandle: pageHandle, rounded: rounded });
+    }
+    else {
+        getPagination = (0, style_one_without_dot_pagination_1.Style_one_without_dot_pagination)({ arrowButtonShow: arrowButtonShow, borderColor: borderColor, borderWidth: borderWidth, buttonBgColor: buttonBgColor, buttonHoverColor: buttonHoverColor, buttonSize: buttonSize, buttonTextColor: buttonTextColor, buttonTextHoverColor: buttonTextHoverColor, current_page: current_page, disableButtonColor: disableButtonColor, font: font, lastPage: lastPage, pageHandle: pageHandle, rounded: rounded });
+    }
+    return getPagination;
+};
+exports.default = Pagination;

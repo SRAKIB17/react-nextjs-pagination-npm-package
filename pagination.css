@@ -2,7 +2,7 @@
 :root {
     --borderRadius: 0.5rem;
     --btn-focus-scale: 0.95;
-    --align-main-div: center;
+    --align-main-div: start;
     --buttonSize: 30px;
     /* 1rem = 16px */
     --padding-mainDiv: 8px 0px;
@@ -74,12 +74,12 @@
     border-radius: 0px;
 }
 
-/* .button-group button:nth-child(1) {
-  --borderRadius: 0.5rem 0 0 0.5rem;
-  border-radius: var(--borderRadius);
+.button-group button:nth-child(1) {
+    --borderRadius: 0.5rem 0 0 0.5rem;
+    border-radius: var(--borderRadius);
 }
 
 .button-group button:nth-last-child(1) {
-  --borderRadius: 0 0.5rem 0.5rem 0;
-  border-radius: var(--borderRadius);
-} */
+    --borderRadius: 0 0.5rem 0.5rem 0;
+    border-radius: var(--borderRadius);
+}

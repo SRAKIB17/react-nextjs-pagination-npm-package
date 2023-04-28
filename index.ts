@@ -1,4 +1,7 @@
-interface PaginationProps {
+import { Style_two_dot_pagination } from "./Style_two_dot_pagination";
+import { Style_one_without_dot_pagination } from "./style_one_without_dot_pagination";
+
+interface PaginationPropsMain {
     pageHandle: (jump: number | string) => any,
     lastPage: number,
     current_page: number,
@@ -11,6 +14,9 @@ interface PaginationProps {
     borderWidth: number,
     buttonSize: number,
     font: number,
+    rounded: true | false,
+    arrowButtonShow: true | false,
+    paginationStyle: 'style_one_dot' | 'style_two_dot'
 }
 
 const Pagination = ({
@@ -26,17 +32,18 @@ const Pagination = ({
     borderWidth = 1,
     buttonSize = 32,
     font = 18,
-}: PaginationProps) => {
-    // for Each
-    const PaginationMainDiv = document.createElement('div');
-    console.log(PaginationMainDiv)
-    return PaginationMainDiv
-};
-Pagination({
-    lastPage: 34,
-    current_page: 2,
-    pageHandle: (jump: string) => {
-        console.log(jump)
+    rounded = false,
+    arrowButtonShow = false,
+    paginationStyle
+}: PaginationPropsMain) => {
+    let getPagination: HTMLDivElement;
+    if (paginationStyle == 'style_one_dot') {
+        getPagination = Style_two_dot_pagination({ arrowButtonShow, borderColor, borderWidth, buttonBgColor, buttonHoverColor, buttonSize, buttonTextColor, buttonTextHoverColor, current_page, disableButtonColor, font, lastPage, pageHandle, rounded })
     }
-})
+    else {
+        getPagination = Style_one_without_dot_pagination({ arrowButtonShow, borderColor, borderWidth, buttonBgColor, buttonHoverColor, buttonSize, buttonTextColor, buttonTextHoverColor, current_page, disableButtonColor, font, lastPage, pageHandle, rounded })
+    }
+    return getPagination
+};
+
 export default Pagination;
