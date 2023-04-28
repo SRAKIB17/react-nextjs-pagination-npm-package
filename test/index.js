@@ -31,7 +31,7 @@ let buttonStyle = {
 
 }
 
-const buttonGenerate = ({ className, style, html, mode }) => {
+const buttonGenerate = ({ className, style, html, mode, pageHandleFunction }) => {
     let button = document.createElement('button')
     button.setAttribute('class', className)
     button.style.borderColor = style.borderColor
@@ -43,7 +43,9 @@ const buttonGenerate = ({ className, style, html, mode }) => {
     button.style.paddingRight = style.buttonSize - 20 + 'px';
     button.style.fontSize = style.fontSize + 'px';
     button.innerHTML = html
-    if (!mode == 'disable') {
+
+
+    if (!(mode == 'disable')) {
         button.onmouseleave = (event) => {
             event.target.style.backgroundColor = style.buttonBgColor;
             event.target.style.color = style.buttonTextColor;
@@ -52,7 +54,9 @@ const buttonGenerate = ({ className, style, html, mode }) => {
             event.target.style.backgroundColor = style.buttonHoverColor;
             event.target.style.color = (Boolean(style.buttonTextHoverColor) ? style.buttonTextHoverColor : style.buttonTextColor);
         }
+        button.onclick = pageHandleFunction
     }
+
     secondDiv.appendChild(button)
 }
 
