@@ -151,34 +151,7 @@ const Pagination = ({
 
                 */}
 
-                {
-                    // CASE: 05
-                    current_page > 1 &&
-                    <button
-                        onClick={() => pageHandle(current_page - 1)}
-                        className="button buttonPage"
-                        style={{
-                            borderColor: borderColor,
-                            borderWidth: borderWidth + 'px',
-                            backgroundColor: buttonBgColor,
-                            color: buttonTextColor,
-                            height: buttonSize + 'px',
-                            paddingLeft: buttonSize - 20 + 'px',
-                            paddingRight: buttonSize - 20 + 'px',
-                            fontSize: font + 'px'
-                        }}
-                        onMouseLeave={(event) => {
-                            event.target.style.backgroundColor = buttonBgColor;
-                            event.target.style.color = buttonTextColor;
-                        }}
-                        onMouseEnter={(event) => {
-                            event.target.style.backgroundColor = buttonHoverColor;
-                            event.target.style.color = (Boolean(buttonTextHoverColor) ? buttonTextHoverColor : buttonTextColor);
-                        }}
-                    >
-                        {current_page - 1}
-                    </button>
-                }
+
                 {/* <a href="#"
                     onmouseover="this.style.textDecoration = 'none'"
                     onmouseout="this.style.textDecoration = 'underline'">Hello</a> */}
